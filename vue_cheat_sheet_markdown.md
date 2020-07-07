@@ -1,19 +1,19 @@
 # Directives
 
 ### Directives are attributes identified by the v- prefix.
-```v-text``` uses the property as the text value of the element
-```v-html``` uses the property as the text value of the element, interpreting HTML
-```v-if``` show an element only if the conditional is true
-```v-else``` shows an alternative element if the preceding v-if is false
-```v-else-if``` adds an else if block for a v-if construct
-```v-show``` similar to ```v-if```, but adds the element to the DOM even if falsy. Just sets it to ```display: none```.
-```v-for``` iterates over an array or iterable object   
-```v-on``` 	listen to DOM events   
-```v-bind``` reactively update an HTML attribute   
-```v-model``` sets up a two-way binding for form inputs. used in form elements, updates the model when the user changes the form field value   
-```v-once``` applies the property just once, and never refreshes it even if the data passed changes
+```v-text``` uses the property as the text value of the element. 
+```v-html``` uses the property as the text value of the element, interpreting HTML. 
+```v-if``` show an element only if the conditional is true. 
+```v-else``` shows an alternative element if the preceding v-if is false. 
+```v-else-if``` adds an else if block for a v-if construct. 
+```v-show``` similar to ```v-if```, but adds the element to the DOM even if falsy. Just sets it to ```display: none```.  
+```v-for``` iterates over an array or iterable object. 
+```v-on``` 	listen to DOM events. 
+```v-bind``` reactively update an HTML attribute.    
+```v-model``` sets up a two-way binding for form inputs. used in form elements, updates the model when the user changes the form field value.    
+```v-once``` applies the property just once, and never refreshes it even if the data passed changes. 
 
-```v-bind``` and ```v-on``` have a shorthand format:   
+```v-bind``` and ```v-on``` have a shorthand format:     
 ``` html
 <a v-bind:href="url">...</a>
 <a :href="url">...</a>
@@ -38,89 +38,89 @@ Example of ```v-if``` / ```v-else``` / ```v-else-if```:
 </div>
 ```
 
-### Conditionals
-You can embed a conditional in an expression using the ternary operator:
+### Conditionals  
+You can embed a conditional in an expression using the ternary operator:  
 ```JavaScript
 {{ isTrue ? 'yes' : 'no' }}
 ```
 
 ### Working with form elements
-To make the model update when the change event occurs, and not any time the user presses a key, you can use ```v-model.lazy``` instead of just ```v.model```.
+To make the model update when the change event occurs, and not any time the user presses a key, you can use ```v-model.lazy``` instead of just ```v.model```.  
 
-Working with input fields, ```v-model.trim``` is useful because it automatically removes whitespace.
+Working with input fields, ```v-model.trim``` is useful because it automatically removes whitespace.  
 
-And if you accept a number instead than a string, make sure you use ```v-model.number```.
+And if you accept a number instead than a string, make sure you use ```v-model.number```.  
 
 ### Modifying events
-I use ```click``` as an example, but applies to all possible events
+I use ```click``` as an example, but applies to all possible events. 
 
-```v-on:click.native``` trigger a native DOM event instead of a Vue event
-```v-on:click.stop``` stop the click event propagation
-```v-on:click.passive``` makes use of the passive option of addEventListener
-```v-on:click.capture``` use event capturing instead of event bubbling
-```v-on:click.self``` make sure the click event was not bubbled from a child event, but directly happened on that element
-```v-on:click.once``` the event will only be triggered exactly once
-```v-on:submit.prevent```: call event.preventDefault() on the triggered submit event, used to avoid a form submit to reload the page
+```v-on:click.native``` trigger a native DOM event instead of a Vue event. 
+```v-on:click.stop``` stop the click event propagation. 
+```v-on:click.passive``` makes use of the passive option of addEventListener. 
+```v-on:click.capture``` use event capturing instead of event bubbling. 
+```v-on:click.self``` make sure the click event was not bubbled from a child event, but directly happened on that element. 
+```v-on:click.once``` the event will only be triggered exactly once. 
+```v-on:submit.prevent```: call event.preventDefault() on the triggered submit event, used to avoid a form submit to reload the page. 
 
 ### Mouse event modifiers
-```v-on:click .left``` triggers only on left mouse button click
-```v-on:click .right``` triggers only on right mouse button click
-```v-on:click .middle``` triggers only on middle mouse button click
+```v-on:click .left``` triggers only on left mouse button click. 
+```v-on:click .right``` triggers only on right mouse button click. 
+```v-on:click .middle``` triggers only on middle mouse button click. 
 
 ### Submit an event only if a particular key is pressed
-```v-on:keyup.enter```
-```v-on:keyup.tab```
-```v-on:keyup.delete```
-```v-on:keyup.esc```
-```v-on:keyup.up```
-```v-on:keyup.down```
-```v-on:keyup.left```
-```v-on:keyup.right```
+```v-on:keyup.enter```  
+```v-on:keyup.tab```  
+```v-on:keyup.delete```  
+```v-on:keyup.esc```  
+```v-on:keyup.up```  
+```v-on:keyup.down```  
+```v-on:keyup.left```  
+```v-on:keyup.right```  
 
 ### Keyboard event modifiers
-Only trigger the event if a particular keyboard key is also pressed:
-```ctrl```
-```alt```
-```shift```
-```meta``` (cmd on Mac, windows key on Win)
+Only trigger the event if a particular keyboard key is also pressed:  
+```ctrl```   
+```alt```   
+```shift```   
+```meta``` (cmd on Mac, windows key on Win).   
 
 ##### v-bind
-```v-bind .prop``` bind a prop instead of an attribute
-```v-bind .camel``` use camelCase for the attribute name
-```v-bind .sync``` a syntactic sugar that expands into a v-on handler for updating the bound value.
+```v-bind .prop``` bind a prop instead of an attribute  
+```v-bind .camel``` use camelCase for the attribute name  
+```v-bind .sync``` a syntactic sugar that expands into a v-on handler for updating the bound value   
 
 ### Lifecycle Hooks
-```beforeCreate``` called before the app is created
-```created``` called after the app is created
-```beforeMount``` called before the app is mounted on the DOM
-```mounted``` called after the app is mounted on the DOM
-```beforeDestroy``` called before the app is destroyed
-```destroyed``` called after the app is destroyed
-```beforeUpdate``` called before a property is updated
-```updated``` called after a property is updated
-```activated``` called when a kept-alive component is activated
-```deactivated``` called when a kept-alive component is deactivated
+```beforeCreate``` called before the app is created  
+```created``` called after the app is created  
+```beforeMount``` called before the app is mounted on the DOM  
+```mounted``` called after the app is mounted on the DOM  
+```beforeDestroy``` called before the app is destroyed  
+```destroyed``` called after the app is destroyed  
+```beforeUpdate``` called before a property is updated  
+```updated``` called after a property is updated  
+```activated``` called when a kept-alive component is activated  
+```deactivated``` called when a kept-alive component is deactivated  
 
 ### Built-in components
-Vue provides 5 built-in components:
-```<component>```
-```<transition>```
-```<transition-group>```
-```<keep-alive>```
-```<slot>```
+Vue provides 5 built-in components:  
+```<component>```  
+```<transition>```  
+```<transition-group>```  
+```<keep-alive>```  
+```<slot>```   
 
 ### Global Configuration of the Vue object
-The ```Vue.config``` object has these properties, which you can modify when you create the instance:
+The ```Vue.config``` object has these properties, which you can modify when you create the instance:    
 
-```silent``` defaults to false, if true suppress logs and warnings
+```silent``` defaults to false, if true suppress logs and warnings  
 ```optionMergeStrategies``` allows to define a custom merging strategy for options
-```devtools``` defaults to true in development, and false in production. You can override those values.
-```errorHandler``` allows to set an error handler function. Useful to hook Sentry and other similar services
-```warnHandler``` allows to set a warning handler function, similar to ```errorHandler```, but for warnings instead of errors
-```ignoredElements``` used to let Vue ignore custom elements defined outside of it, like Web Components.
-```keyCodes``` let you define custom key aliases for v-on
-```performance``` defaults to false. If set to true, traces the performance of Vue components in the Browser DevTools.
-```productionTip``` defaults to true. Set to false to disable the warning “you’re in development mode” during development in the console.
+```devtools``` defaults to true in development, and false in production. You can override those values  
+```errorHandler``` allows to set an error handler function. Useful to hook Sentry and other similar services  
+```warnHandler``` allows to set a warning handler function, similar to ```errorHandler```, but for warnings instead of errors   
+```ignoredElements``` used to let Vue ignore custom elements defined outside of it, like Web Components   
+```keyCodes``` let you define custom key aliases for v-on 
+```performance``` defaults to false. If set to true, traces the performance of Vue components in the Browser DevTools   
+```productionTip``` defaults to true. Set to false to disable the warning “you’re in development mode” during development in the console  
 
 ### Methods of the Vue object
 ```Vue.extend``` 	allows to subclass the Vue object, to create a custom profile
