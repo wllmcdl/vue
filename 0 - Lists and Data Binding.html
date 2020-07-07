@@ -1,0 +1,40 @@
+<!doctype html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+</head>
+
+<body>
+    <div id="list">
+        <ul>
+            <li v-for='name in names' v-text='name'></li>
+        </ul>
+
+        <input type="text" v-model="newName">
+        <button @click="addName">Add Name</button>
+    </div>
+
+
+    <script>
+        let app1 = new Vue({
+            el: "#list",
+
+            data: {
+                newName: "",
+                names: ["John", "William", "Caio", "Ruan"],
+            },
+
+            methods: {
+                addName() {
+                    this.names.push(this.newName);
+                    this.newName = "";
+                },
+            },
+        });
+    </script>
+
+</body>
+
+</html>

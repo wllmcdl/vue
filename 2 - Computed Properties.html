@@ -1,0 +1,33 @@
+<!doctype html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+</head>
+
+<body>
+
+    <div id="tasks">
+        <h1>Tasks</h1>
+        <ul>
+            <li v-for='task in incompleteTasks'>
+                {{task.description}}
+                <button @click='done(task)'>Done</button>
+            </li>
+        </ul>
+
+        <h1>Completed Tasks</h1>
+        <ul>
+            <li v-for='task in completeTasks' v-text='task.description'>
+            </li>
+        </ul>
+    </div>
+
+
+
+
+    <script src="app3.js"></script>
+</body>
+
+</html>

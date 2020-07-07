@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.0/css/bulma.min.css">
+</head>
+
+<body>
+    <div id="root" class="container" style="margin-top: 40px;">
+        <tabs>
+            <tab name="About Us">
+                <h1>Content for the about us tab</h1>
+            </tab>
+            <tab name="About Our Culture">
+                <h1>Content about our culture tab</h1>
+            </tab>
+            <tab name="About Our Vision">
+                <h1>Content about our vision tab</h1>
+            </tab>
+       </tabs>
+    </div>
+
+
+    <script>
+        Vue.component('tabs', {
+            template: `
+            <!-- we put this <div> here because a component has to have only one root element --> 
+                <div>
+                    <div class="tabs is-centered is-large">
+                        <ul>
+                            <li v-for="tab in tabs" :class="{ 'is-active': tab.isActive }">
+                                <a :href="tab.href" @click="selectTab(tab)">{{ tab.name }}</a>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <div class="tabs-content">
+                        <!-- slot means: get everything in between the tabs tag end slot them in between the slot tags -->
+                            <slot></slot>
+                    </div>
+                </div>
+            `,
+
+            data() {
+                return { 
+                    tabs: [] 
+                }
+            },
+
+            created() {
+                this.tabs = this.$children;
+            },
+
+            methods: {
+                selectTab(selectedTab) {
+                    this.tabs.forEach(tab => {
+                        tab.isActive = (tab.name == selectedTab.name);
+                    });
+                }
+            }
+        });
+
+        Vue.component('tab', {
+            template: `
+                <div v-show="isActive"><slot></slot></div>
+            `,
+
+            props: {
+                name: { required: true },
+                selected: { default: false }
+            },
+
+            data() {
+                return {
+                    isActive: false
+                }
+            },
+            
+            computed: {
+                href() {
+                    return '#' + this.name.toLowerCase().replace(/ /g, '-')
+                }
+            },
+
+            mounted() {
+                this.isActive = this.selected;
+            }
+        });
+
+        new Vue({
+            el: "#root"
+        });
+    </script>
+</body>
+
+</html>

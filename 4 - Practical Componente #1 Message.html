@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.0/css/bulma.min.css">
+</head>
+<body>
+    <div id="root" class="container" style="margin-top: 40px;">
+        <message title="Hello Motherfucker" body="Lorem ipsum dolores"></message>
+        <message title="Possible Worlds" body="Lorem ipsum dolores"></message>
+    </div>
+
+
+
+    <script>
+        Vue.component('message', {
+            props: ['title', 'body'],
+            
+            data() {
+                return {
+                    isVisible: true
+                };
+            },
+
+            template: `
+            <article class="message" v-show="isVisible">
+                <div class="message-header">
+                    {{ title }}
+                    <button class="delete" aria-label="delete" @click="hideModal"></button>
+                </div>
+                <div class="message-body">
+                    {{ body }}
+                </div>
+            </article>
+            `,
+
+            methods: {
+                hideModal() {
+                    this.isVisible = false;
+                },
+            }
+        });
+
+        new Vue({
+            el: "#root"
+        });
+    </script>
+</body>
+</html>

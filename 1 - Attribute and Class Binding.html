@@ -1,0 +1,26 @@
+<!doctype html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+</head>
+
+<body>
+    <div id="dataBinding">
+        <!-- <button v-bind:title="title">Button</button> This is the longer version-->
+        <button :title="myTitle">Button</button>
+    </div>
+
+
+    
+    <script>
+        new Vue({
+            el: "#dataBinding",
+
+            data: {
+                myTitle: "You hovered over me!",
+            },
+        });
+    </script>
+</body>

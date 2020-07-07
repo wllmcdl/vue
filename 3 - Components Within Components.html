@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+</head>
+
+<body>
+
+    <div id="root">
+        <todo-list></todo-list>
+    </div>
+
+    <script>
+        Vue.component('todo-list', {
+            template: `
+                <ol>
+                    <todo v-for="todo in todos">{{ todo.text }}</todo>
+                </ol>
+            `,
+
+            data() {
+                return {
+                    todos: [
+                        { text: 'Learn JavaScript' },
+                        { text: 'Learn Vue' },
+                        { text: 'Build something awesome' }
+                    ]
+                };
+            }
+        });
+
+        Vue.component('todo', {
+            template: '<li><slot></slot></li>'
+        });
+
+        new Vue({
+            el: "#root"
+        });
+    </script>
+
+</body>
+
+</html>
